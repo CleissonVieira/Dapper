@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using System.Security.Cryptography;
 
 namespace eCommerce.API.Repositories
 {
@@ -13,7 +14,7 @@ namespace eCommerce.API.Repositories
         private IDbConnection _connection;
         public UsuarioRepository()
         {
-            _connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            _connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
         }
 
 
@@ -32,7 +33,7 @@ namespace eCommerce.API.Repositories
 
         public Usuario Get(int id)
         {
-            return _db.FirstOrDefault(x => x.Id.Equals(id));
+            return _connection.QuerySingleOrDefault<Usuario>("SELECT * FROM USUARIOS WHERE ID=@_id", new { _id = id });
         }
 
         public void Insert(Usuario usuario)

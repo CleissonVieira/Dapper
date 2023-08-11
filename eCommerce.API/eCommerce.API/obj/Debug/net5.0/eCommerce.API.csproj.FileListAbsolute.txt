@@ -31,3 +31,10 @@ C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\obj\De
 C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\obj\Debug\net5.0\eCommerce.API.pdb
 C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\obj\Debug\net5.0\eCommerce.API.genruntimeconfig.cache
 C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\obj\Debug\net5.0\ref\eCommerce.API.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\Dapper.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\System.Data.SqlClient.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\cleisson.vieira\Repositórios\Dapper\eCommerce.API\eCommerce.API\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
