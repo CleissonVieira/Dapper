@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Dapper;
-using System.Security.Cryptography;
 
 namespace eCommerce.API.Repositories
 {
@@ -16,15 +14,6 @@ namespace eCommerce.API.Repositories
         {
             _connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
         }
-
-
-        private static List<Usuario> _db = new()
-        {
-            new Usuario(){ Id = 1, Nome = "Nome usuario 1", Email = "email.usuario1@gmail.com" },
-            new Usuario(){ Id = 2, Nome = "Nome usuario 2", Email = "email.usuario2@gmail.com" },
-            new Usuario(){ Id = 3, Nome = "Nome usuario 3", Email = "email.usuario3@gmail.com" },
-            new Usuario(){ Id = 4, Nome = "Nome usuario 4", Email = "email.usuario4@gmail.com" },
-        };
 
         public List<Usuario> Get()
         {
@@ -38,25 +27,19 @@ namespace eCommerce.API.Repositories
 
         public void Insert(Usuario usuario)
         {
-            var ultimoUsuario = _db.LastOrDefault();
-
-            if (ultimoUsuario == null)
-                usuario.Id = 1;
-            else
-                usuario.Id = ultimoUsuario.Id+1;
-
-            _db.Add(usuario);
+            string sql = "INSERT INTO Usuarios (Nome, Email, Sexo, RG, CPF, NomeMae, SituacaoCadastro, DataCadastro) VALUES (@Nome, @Email, @Sexo, @RG, @CPF, @NomeMae, @SituacaoCadastro, @DataCadastro); SELECT CAST(SCOPE_IDENTITY() AS INT);";
+            _ = _connection.Query<int>(sql, usuario).Single();
         }
 
         public void Update(Usuario usuario)
         {
-            _db.Remove(_db.FirstOrDefault(x => x.Id.Equals(usuario.Id)));
-            _db.Add(usuario);
+            string sql = "UPDATE Usuarios SET Nome = @Nome, Email = @Email, Sexo = @Sexo, RG = @RG, CPF = @CPF, NomeMae = @NomeMae, SituacaoCadastro = @SituacaoCadastro, DataCadastro = @DataCadastro WHERE Id = @Id";
+            _connection.Execute(sql, usuario);
         }
 
         public void Delete(int id)
         {
-            _db.Remove(_db.FirstOrDefault(x => x.Id.Equals(id)));
+            _connection.Execute("DELETE FROM Usuarios WHERE Id = @Id", new { Id = id });
         }
     }
 }
